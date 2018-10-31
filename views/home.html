@@ -1,23 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>home</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/libs/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/home.css">
+	<script src="/js/jquery-3.3.1.min.js"></script>
+
 </head>
+
 <body>
-	<section id="userData">
-		<div class="userPhoto"></div>
-		<div class="datos"></div>
-	</section>
-	<section id="listadoCursos">
-		<div class="list-group">
-  		<a href="#" class="list-group-item list-group-item-action active">
-    		Cras justo odio
-  		</a>
-		</div>
+	<section id="container">
+		<section id="userData">
+			<div class="userImg"></div>
+			<div class="datos">
+				<h2 id="apellido"></h2>
+				<h3 id="nombre"></h3>
+				<h4 id="dni">DNI</h4>
+				<h5>CURSO: 5C</h5>
+			</div>
+		</section>
+		<section id="cursos">
+			<div class="title">Mis Cursos</div>
+			<div id="listClass">
+				<div class="list-group">
+					<a href="#" class="list-group-item list-group-item-action active" id="gda">
+						Gestión de Datos
+					</a>
+					<a href="#" class="list-group-item list-group-item-action ">
+						Laboratorio de Hardware
+					</a>
+					<a href="#" class="list-group-item list-group-item-action ">
+						Sistemas y Organizaciones
+					</a>
+					<a href="#" class="list-group-item list-group-item-action ">
+						Base de Datos
+					</a>
+				</div>
+			</div>
+			<div class="materia">Gestión de Datos</div>
+			<section id="contentListWorks">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nombre del Archivo</th>
+							<th scope="col">Fecha</th>
+							<th scope="col">Estado</th>
+						</tr>
+					</thead>
+					<!-- <tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>tp1_SegInformatica.pdf</td>
+							<td>02/08/2018</td>
+							<td>Corregido</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>tp2_VirusInformaticos.pdf</td>
+							<td>12/08/2018</td>
+							<td>Pendiente</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>tp3_DispositivosAlmacen.docx</td>
+							<td>27/10/2018</td>
+							<td>Corregido</td>
+						</tr>
+					</tbody> -->
+				</table>
+			</section>
+		</section>
+
 	</section>
 
+	<script src="/js/home.js"></script>
 </body>
+
 </html>

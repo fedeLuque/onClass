@@ -8,14 +8,28 @@
 
 		btnNewUser.addEventListener("click", function (e) {
 			e.preventDefault();
-			userData.firstName = document.querySelector("#firstName").value;
-			userData.lastName = document	.querySelector("#lastName").value;
+			userData.name = (document.querySelector("#name").value).toUpperCase();
+			userData.lastName = (document.querySelector("#lastName").value).toUpperCase();
 			userData.email = document.querySelector("#email").value;
-			userData.pass = document.querySelector("#password").value;
-			userData.address = document.querySelector("#addres").value;
+			userData.password = document.document.querySelector("#name").valuequerySelector("#password").value;
+			userData.dni = document.querySelector("#dni").value;
 			userData.sexo = document.querySelector("#inputSex").value;
-			// btnNewUser.disabled = true;
-			console.log(userData);
+			userData.curso = '5C';
+			$.ajax ({
+				data: {user: JSON.stringify(userData)},
+				url: '/register',
+				type: 'POST',
+				success: function(response) {
+					console.log(response)
+					localStorage.setItem("user",JSON.stringify(userData))
+					localStorage.setItem("name",JSON.stringify(userData.name))
+					localStorage.setItem("lastName",JSON.stringify(userData.lastName))
+					localStorage.setItem("dni",JSON.stringify(userData.dni))
+
+
+				}
+			});
+		window.location.assign("/home");
 		});
 		
 		btnBack.addEventListener("click", function (e) {
