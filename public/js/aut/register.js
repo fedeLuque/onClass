@@ -11,7 +11,7 @@
 			userData.name = (document.querySelector("#name").value).toUpperCase();
 			userData.lastName = (document.querySelector("#lastName").value).toUpperCase();
 			userData.email = document.querySelector("#email").value;
-			userData.password = document.document.querySelector("#name").valuequerySelector("#password").value;
+			userData.password = document.querySelector("#password").value;
 			userData.dni = document.querySelector("#dni").value;
 			userData.sexo = document.querySelector("#inputSex").value;
 			userData.curso = '5C';

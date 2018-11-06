@@ -1,0 +1,102 @@
+#container {
+    position: relative;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+#curso {
+    position: absolute;
+    display: inline-block;
+    width: 70%;
+    height: 100vh;
+}
+
+#materia{
+    height: 50px;
+    background-color: #000;
+    font-size: 25px;
+    color: #fff;
+    font-style: initial;
+    text-align: center;
+
+
+}
+
+#userData {
+    width: 30%;
+    height: 100vh;
+    border-color: black;
+    border-right-style: solid;
+    border-right-width: 3px;
+    display: inline-block;
+
+}
+
+.userImg {
+    background-image: url(../img/studentIcon.png);
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+}
+
+.datos {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+.twoColumns {
+    width: 100%;
+    height: 90vh;
+
+}
+
+ #contentListWorks {
+    width: 100%;
+    height: 50%;
+} 
+
+#enviarArchivo {
+    width: 60%;
+    margin: 0 auto;
+}
+
+#sendFile {
+    width: 80px;
+    height: 80px;
+    background-color: #fff; 
+    border-radius: 2px;
+    border: 1px solid #d8d8d8;
+    box-shadow: 0 1px 6px rgba(0,0,0,.22);
+    border-bottom-width: 2px;
+    margin: 0 auto;
+}
+
+#sendFile:hover {
+    background-color: darkgray;
+}
+
+#sendFile > img {
+    width: 100%;
+}
+
+#notificacion {
+    color: red;
+}
+/* 
+.conexion {
+    background-color: darkslategrey;
+    color: #fff;
+    height: 50%;
+    padding: 25px;
+    position: relative;
+   
+} 
+textarea {
+    position: absolute;
+    width: 90%;
+    height: 50%;
+} */
+
+
+
