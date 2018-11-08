@@ -52,6 +52,7 @@
 }
 
  #contentListWorks {
+    overflow: scroll;
     width: 100%;
     height: 50%;
 } 
@@ -82,6 +83,10 @@
 
 #notificacion {
     color: red;
+}
+
+#tbody {
+    height: 200px;
 }
 /* 
 .conexion {

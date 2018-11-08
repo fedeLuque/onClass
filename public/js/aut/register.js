@@ -15,17 +15,21 @@
 			userData.dni = document.querySelector("#dni").value;
 			userData.sexo = document.querySelector("#inputSex").value;
 			userData.curso = '5C';
+			var gda = [];
+			userData.materiaGd = gda;
+			userData.materiaLab = [];
+			userData.materiaSor = [];
+			// userData.materiaBd = [];
 			$.ajax ({
-				data: {user: JSON.stringify(userData)},
+				data: {user: userData},
 				url: '/register',
 				type: 'POST',
 				success: function(response) {
 					console.log(response)
-					localStorage.setItem("user",JSON.stringify(userData))
-					localStorage.setItem("name",JSON.stringify(userData.name))
-					localStorage.setItem("lastName",JSON.stringify(userData.lastName))
-					localStorage.setItem("dni",JSON.stringify(userData.dni))
-
+					sessionStorage.setItem("user",JSON.stringify(userData))
+					sessionStorage.setItem("name",JSON.stringify(userData.name))
+					sessionStorage.setItem("lastName",JSON.stringify(userData.lastName))
+					sessionStorage.setItem("dni",JSON.stringify(userData.dni))
 
 				}
 			});

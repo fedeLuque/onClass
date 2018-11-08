@@ -1,7 +1,7 @@
 (function () {
-    document.querySelector("#apellido").innerHTML = JSON.parse(localStorage.getItem("lastName"));
-    document.querySelector("#nombre").innerHTML = JSON.parse(localStorage.getItem("name"));
-    document.querySelector("#dni").innerHTML += " " + JSON.parse(localStorage.getItem("dni"));
+    document.querySelector("#apellido").innerHTML = JSON.parse(sessionStorage.getItem("lastName"));
+    document.querySelector("#nombre").innerHTML = JSON.parse(sessionStorage.getItem("name"));
+    document.querySelector("#dni").innerHTML += " " + JSON.parse(sessionStorage.getItem("dni"));
     
     var materiaPath = window.location.pathname.split("/").pop();
     var btnSendFile = document.querySelector("#sendFile");
@@ -42,6 +42,7 @@
             fileTp.nombreArchivo = nameFile.files[0].name;
             fileTp.fecha = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear();
             fileTp.estado = 'Pendiente';
+            fileTp.dniAlumno = sessionStorage.getItem("dni");
             
             $.ajax ({
                 url: '/addFile',
@@ -63,10 +64,15 @@
     $.ajax({
         url: '/getInfo',
         type: 'POST',
-        data: {materia: materiaPath.toString()},
+        data: {materia: materiaPath.toString(), dni: JSON.parse(sessionStorage.getItem("dni"))},
         success: function (materia) {
-            id = materia.files.length;
-            cargarTabla(materia);
+            if(materia) {
+                console.log(materia)
+                // id = materia.files.length;
+                id= '6';
+                cargarTabla(materia);
+            }
+          
         }
     })
     

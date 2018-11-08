@@ -1,45 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Login</title>
+	<title>¡Hola!, Ingresá tu e-mail</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/libs/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/login.css">
-	<script type="text/javascript" src="js/aut/login.js"></script>
-  <script type="text/javascript" src="js/aut/forgot_password.js"></script>
+	<link rel="icon" href="img/favicon.png" type="image/x-icon">
 </head>
+
 <body>
-	<section id="container">
+	<header>
+		<div id="logo">
+			<div class="imgLogo"></div>
+			<div class="titleLogo"></div>
+		</div>
+	</header>
+	<section id="topPannel">
+		<div class="boxTitle">
+			<div class="avatar"></div>
+			<div class="title">
+				<h3 id="header">¡Hola! Ingresá tu e-mail</h3>
+			</div>
+		</div>
+	</section>
+	<section id="downPannel">
+		<div id="formPannel">
+			<form action="#" name="formLogin" method="get">
+				<div id="divEmail" class="form-group">
+					<label>E-mail</label>
+					<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+					<label id="lblNotifEmail" class="notificacion"></label>
+					<button id="btnContinuar" type="button" class="btn btn-primary btn-lg btn-block">Continuar</button>
+					<a href="/register" class="href">Crear cuenta</a>
+				</div>
+				<div id="divPass" class="form-group">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" class="form-control" id="password" placeholder="Password">
+					<label id="lblNotifPass" class="notificacion"></label>
+					<button id="btnIngresar" type="button" class="btn btn-primary btn-lg btn-block">Ingresar</button>
+					<a href="/forgot" class="href">No sé mi clave</a>
+				</div>
+			</form>
+		</div>
+	</section>
+	<!-- <section id="container">
 		<header>
 			<img src="img/ojoCerradura.png">
 		</header>
 		<div class="login">
 			<form action="#" name="formLogin" method="get">
 				<div class="form-group">
-    				<label >User</label>
-    				<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" >
-    			</div>
-  				<div class="form-group">
-  					<label for="exampleInputPassword1">Password</label>
-      				<input type="password" class="form-control" id="password" placeholder="Password" >
-    			</div>
-  				<button id="btnLogin" type="submit">Login</button>
-  				<button id="btnSend" type="submit">Send</button>
-  				<div>
-  					<footer>
-  						<div id="register">
-  							<h6><a href="#">Aún no se ha registrado?</a></h6>	
-  						</div>
-  						<div id="forgot">
-  							<h6><a href="#">Olvido la contraseña?</a></h6>	
-  						</div>
-  						<div id="back">
-  							<h6><a href="#"><< back</a></h6>	
-  						</div>
-  					</footer>
+					<label class="notificacion"></label>
+					<label>User</label>
+					<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
 				</div>
-  			</form>
-	</section>
-			
+				<div class="form-group">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" class="form-control" id="password" placeholder="Password">
+				</div>
+				<button id="btnLogin" type="submit">Login</button>
+				<button id="btnSend" type="submit">Send</button>
+				<div>
+					<footer>
+						<div id="register">
+							<h6><a href="#">Aún no se ha registrado?</a></h6>
+						</div>
+						<div id="forgot">
+							<h6><a href="#">Olvido la contraseña?</a></h6>
+						</div>
+						<div id="back">
+							<h6><a href="#">
+									<< back</a> </h6> </div> </footer> </div> </form> </section> -->
+									<script type="text/javascript" src="js/aut/login.js"></script>
+									<!-- <script type="text/javascript" src="js/aut/forgot_password.js"></script> -->
+									<script src="/js/jquery-3.3.1.min.js"></script>									
 </body>
+
 </html>
