@@ -1,7 +1,8 @@
 ( function () {
-    document.querySelector("#apellido").innerHTML = JSON.parse(sessionStorage.getItem("lastName"));
-    document.querySelector("#nombre").innerHTML = JSON.parse(sessionStorage.getItem("name"));
-    document.querySelector("#dni").innerHTML += " "+ JSON.parse(sessionStorage.getItem("dni"));
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    document.querySelector("#apellido").innerHTML = user.lastName;
+    document.querySelector("#nombre").innerHTML = user.name;
+    document.querySelector("#dni").innerHTML += " "+ user.dni;
 
     var btnLogout = document.querySelector("#logout");
     btnLogout.addEventListener("click", function (e) {

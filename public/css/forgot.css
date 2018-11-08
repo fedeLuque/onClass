@@ -1,0 +1,85 @@
+header {
+    width: 100%;
+    height: 5%;
+    background-color: #1E90FF;
+}
+
+#logo {
+    width: 300px;
+    height: 80px;
+    position: relative;
+}
+
+#logo .imgLogo {
+    width: 100px;
+    height: inherit;
+    background-image: url(../img/logoAlternativo.png);
+    display: inline-block;
+}
+
+#logo .titleLogo {
+    width: 200px;
+    height: 40px;
+    margin: 25px 20px 20px 10px;
+    display: inline-block;
+    position: absolute;
+    font-size: 50px;
+    background-image: url(../img/logwhite.png);
+}
+
+#container {
+    height: 80vh;
+    width: 100%;
+    position: relative;
+}
+ 
+#iconPensador {
+    width: 25%;
+    height: 50vh;
+    display: inline-block;
+    background-image: url(../img/pensador.png);
+    margin: 70px;
+} 
+
+#pannel {
+    width: 55%;
+    height: 300px;
+    margin: 45px;
+    /* padding: 40px 78px 54px; */
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border-color: #000;
+    /* background-color: #fff; */
+    box-shadow: 2px 2px 2px #808080;
+    color: #808080;
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif; 
+    font-weight: normal;
+    display: inline-block;
+    position: absolute;
+} 
+
+#imgCarta {
+    width: 75px;
+    height: 58px;
+    display: inline-block;
+    background-image: url(../img/carta.png);
+    background-position-x: 5px;
+}
+
+#titleEnvio {
+    width: 500px;
+    height: 50px;
+    display: inline-block;
+    padding: 15px;
+    position: relative;
+    top: -20px;
+    text-align: center;
+}
+
+#formPannel {
+    width: 85%;
+    height: inherit;
+    /* background-color: red; */
+    margin: 25px auto;
+}
+

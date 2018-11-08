@@ -23,9 +23,11 @@
 					inputEmail.focus();
 				} else {
 					alumnoBD = alumno;
+					sessionStorage.setItem("user", JSON.stringify(alumno))
 					divEmail.style.display = "none";
 					divPass.style.display = "inline-block";
 					title.innerHTML = "Ahora, tu clave";
+					console.log("entró");
 				}
 			}
 		})
@@ -42,7 +44,6 @@
 			notifPass.innerHTML = "* Contraseña Incorrecta";
 			inputPassword.value = "";
 			inputPassword.focus();
-
 		}
 	})
 
