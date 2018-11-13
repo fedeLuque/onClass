@@ -1,5 +1,6 @@
 (function () {
     var profe = JSON.parse(sessionStorage.getItem("user"));
+    console.log(profe)
     var lastName = document.querySelector("#lastName");
     var name = document.querySelector("#name")
     var fullNameMessage = document.querySelector("#inputRemitente");
@@ -22,7 +23,7 @@
 
     boxMateriaGda.style.display = "none";
     boxMateriaLab.style.display = "none";
-    boxMateriaGda.style.display = "none";
+    boxMateriaBd.style.display = "none";
     boxMateriaSor.style.display = "none";
     lastName.innerHTML = "Prof. " + profe.lastName + ",";
     name.innerHTML = profe.name;
@@ -49,26 +50,29 @@
     }
 
     //cargarMaterias
-    for (var i = 0; i < profe.materias.length; i++) {
-        switch (profe.materias[i].name) {
-            case "gda":
-                boxMateriaGda.style.display = "inline-block";
-                arrayMaterias.push("Gestión de Datos");
-                break;
-            case "laboratorio":
-                boxMateriaLab.style.display = "inline-block";
-                arrayMaterias.push("Lab. Hardware");
-                break;
-            case "sor":
-                boxMateriaSor.style.display = "inline-block";
-                arrayMaterias.push("Sist. y Org.");
-                break;
-            case "bd":
-                boxMateriaBd.style.display = "inline-block";
-                arrayMaterias.push("Base de Datos");
-                break;
+    if(profe) {
+        for (var i = 0; i < profe.materias.length; i++) {
+            switch (profe.materias[i].name) {
+                case "gda":
+                    boxMateriaGda.style.display = "inline-block";
+                    arrayMaterias.push("Gestión de Datos");
+                    break;
+                case "laboratorio":
+                    boxMateriaLab.style.display = "inline-block";
+                    arrayMaterias.push("Lab. Hardware");
+                    break;
+                case "sor":
+                    boxMateriaSor.style.display = "inline-block";
+                    arrayMaterias.push("Sist. y Org.");
+                    break;
+                case "bd":
+                    boxMateriaBd.style.display = "inline-block";
+                    arrayMaterias.push("Base de Datos");
+                    break;
+            }
         }
     }
+   
 
     cargarCombo();
     select.addEventListener('change', function (e) {

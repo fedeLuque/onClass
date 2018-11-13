@@ -73,9 +73,7 @@ app.post('/register', function (req, res) {
 		if (usersAlumno[i].email === req.body.user.email) {
 			alumno = usersAlumno[i];
 			break;
-		} else {
-			console.log("no hay coincidencia")
-		}
+		} 
 	} res.json(alumno)
 })
 
@@ -89,9 +87,7 @@ app.post('/login', function (req, res) {
 			if (usersProfesor[i].email == req.body.userName) {
 				user = usersProfesor[i];
 				break
-			} else {
-				console.log("no hay coincidencia")
-			}
+			} 
 		}
 	} res.json(user)
 
@@ -290,12 +286,10 @@ app.post('/sendFile', function (req, res) {
 app.post('/verMjesAlumno', function (req, res) {
 	var materia = req.body.materia;
 	var arrayMjes = [];
-	console.log(materia);
 	for (var i = 0; i < usersProfesor.length; i++) {
 		for (var j = 0; j < usersProfesor[i].materias.length; j++) {
 			if (usersProfesor[i].materias[j].name === materia) {
 				arrayMjes = usersProfesor[i].materias[j].mjes;
-				console.log(arrayMjes);
 				res.json(arrayMjes);
 				break;
 			}
@@ -320,11 +314,11 @@ const usersProfesor = [
 				tps: [],
 				mjes: [
 					{
-						fecha: "15/11/2018",
+						fecha: "15/10/2018",
 						contenido: "Hola chicos, como andan?"
 					},
 					{
-						fecha: "20/08/2018",
+						fecha: "02/11/2018",
 						contenido: "Mañana no hay clases"
 					}
 				]
@@ -334,8 +328,12 @@ const usersProfesor = [
 				tps: [],
 				mjes: [
 					{
-						fecha: "25/10/2018",
+						fecha: "15/09/2018",
 						contenido: "Hola chicos, mañana prueba"
+					},
+					{
+						fecha: "12/11/2018",
+						contenido: "Mañana lleven la calculadora"
 					}
 				]
 			}
@@ -349,17 +347,34 @@ const usersProfesor = [
 		sexo: 'Femenino',
 		dni: '33654783',
 		isAlumno: false,
-		materias: [
+		materias:  [
 			{
 				name: "sor",
 				tps: [],
-				mjes:
-					[]
+				mjes: [
+					{
+						fecha: "05/07/2018",
+						contenido: "Chicos, acuerdense del TP para mañana!"
+					},
+					{
+						fecha: "02/10/2018",
+						contenido: "Mañana no me adhiero al paro"
+					}
+				]
 			},
 			{
 				name: "laboratorio",
 				tps: [],
-				mjes: []
+				mjes: [
+					{
+						fecha: "03/09/2018",
+						contenido: "Mañana tenemos un taller sobre adicciones"
+					},
+					{
+						fecha: "12/11/2018",
+						contenido: "El viernes llego 1 hs mas tarde"
+					}
+				]
 			}
 		]
 	}

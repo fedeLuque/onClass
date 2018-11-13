@@ -24,13 +24,7 @@ header {
     display: inline-block;
 }
 
-#menu a {
-    padding: 2px 10px 2px 50%;
-    margin: 5% auto;
-    display: inline-block;
-    color: #fff;
-    border-right: 1px solid #fff;
-}
+
 
 #menu span {
     color: #fff;
@@ -97,7 +91,6 @@ header {
 #userData {
     width: inherit;
     height: 30px;
-    /* background-color: orange; */
     font-size: 18px;
     color: #fff;
 }
@@ -131,5 +124,16 @@ header {
     height: 400px;
     background-color: #DCDCDC;
     overflow: scroll;
+}
+#enlace {
+    padding: 2px 10px 2px 40%;
+    margin: 5% auto;
+    display: inline-block;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
 
+#salir {
+    width: 100px;
+    padding: 2px 10px 2px 0;
 }
