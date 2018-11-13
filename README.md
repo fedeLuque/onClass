@@ -10,11 +10,12 @@
 
 * <b>Autentificación</b> 
   + Register
-    + firstName
+    + name
     + lastName
     + email
+    + dni
     + password
-    + address
+    + confPass
     + sex
   + Login
     + user
@@ -25,16 +26,39 @@
 * <b>Home</b>
   + UserData
     + foto de perfil
+    + name
     + lastName
-    + firstName
+    + email
     + dni
-    + curso/división
-  + Listado de los cursos que el alumno este inscripto (Login alumno)
-  + Listado de los cursos que el docente tiene a cargo (Login Docente)
+    + curso
+
+* <b>HomeDocente</b>
+  + lastName
+  + name
+  + listado de las materias que el docente tiene a cargo.
+  + remitente
+  + destinatario
+  + mensaje
 
 
 * <b>Curso</b>
-  + Cada curso tendrá un listado de los trabajos prácticos enviados por los alumnos al docente.
-  + Cada curso tendrá una sección dedicada a mostrar los mensajes/TP que el docente deje a sus alumnos.
-  + Cada curso tendrá un listado de los TP enviados al docente por sus respectivos alumnos.
-  + Cada curso tendrá una sección donde se le permitirá al docente mandarles un mensaje/TP a los alumnos del curso (incluso puede mandar mensajes generales)
+  + enlace a HOME
+  + email
+  + txtMje: donde tendrá el mensaje que su profesor le deje.
+  + user
+    + lastName
+    + name  
+  + nameMateria
+
+* <b>CursoDocente</b>
+  + enlace a HOMEDOCENTE
+  + email
+  + lastName
+  + name
+  + nameMateria
+  + table 
+      + id
+      + nombre_TP
+      + fecha
+      + alumno
+      + estado
