@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/libs/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/homeDocente.css">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <title>Home</title>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <div class="imgLogo"></div>
+            <div class="titleLogo"></div>
+        </div>
+    </header>
+    <section id="container">
+        <div class="row">
+            <div id="profile" class="col-2">
+                <div class="titleProfile">
+                    <span>¡Bienvenido!</span>
+                </div>
+                <div id="icon"></div>
+                <div id="userData">
+                    <span id="lastName"></span>
+                    <span id="name"></span>
+                </div>
+            </div>
+            <div id="classList">
+                <div class="titleProfile">
+                    <span>Mis materias</span>
+                </div>
+                <div id="containerMaterias">
+                    <div class="row">
+                        <div class="col-3">
+                            <a href="/cursoDocente/bd">
+                                <div id="bd" class="materia">
+                                    <div id="imgBd" class="img"></div>
+                                    <div class="title">Base de Datos</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a href="/cursoDocente/gda">
+                                <div id="gda"id="gda" class="materia">
+                                    <div id="imgGda" class="img"></div>
+                                    <div class="title">Gestión de Datos</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a href="/cursoDocente/laboratorio">
+                                <div id="lab" class="materia">
+                                    <div id="imgLab" class="img"></div>
+                                    <div class="title">Lab. de Hardware</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a href="/cursoDocente/sor">
+                                <div id="sor" class="materia">
+                                    <div id="imgSor" class="img"></div>
+                                    <div class="title">Sist. y Org</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="message" class="col-3">
+                <div class="titleProfile">
+                    <span>Mensajes</span>
+                </div>
+                <div id="containerMessage">
+                    <form>
+                        <div id="remitente">
+                            <span>De: </span>
+                            <input id="inputRemitente" type="text" class="form-control"
+                                disabled>
+                        </div>
+                        <div id="destinatario">
+                            <span>Para: </span>
+                            <input id="inputDestinatario" type="text" class="form-control" value="5to C" disabled>
+                            <div id="lista"></div>
+                        </div>
+                        <div id="options">
+                            <span>Materias: </span>
+                            <select class="custom-select " id="listaMaterias">
+                                <option selected value="0">Elegí tu opción</option>
+                            </select>
+                        </div>
+                        <div id="containerTxtArea">
+                            <textarea id="areaMessage"></textarea>
+                        </div>
+                        <div id="btnMessage">
+                            <div id="btnMessageEnviados" class="btn"></div>
+                            <div id="btnSend" class="btn"></div>
+                        </div>
+                        <div id="containerNotif">
+                            <label id="notificacion"></label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="js/homeDocente.js"></script>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+</body>
+
+</html>

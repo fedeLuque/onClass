@@ -61,7 +61,8 @@ header {
     width: 150px;
     height: 150px;
     margin: 0 auto;
-    background-image: url(../img/laptop.png);   
+    background-image: url(../img/login.png); 
+    background-repeat: no-repeat;  
 }
 
 input[type="email"], input[type="password"] {
@@ -113,8 +114,10 @@ a:hover {
 .title {
     text-align: center;
     color: #fff;
-    line-height: 1.17;
-    font-weight: 100;
+    font-size: 15px;
+    font-weight: normal!important;
+    font-style: oblique;
+    font-weight: 700;
 }
 
 .notificacion {

@@ -6,59 +6,69 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/libs/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/curso.css">
-	<script src="/js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
-	<section id="container">
-		<section id="userData">
-			<div class="userImg"></div>
-			<div class="datos">
-				<h2 id="apellido"></h2>
-				<h3 id="nombre"></h3>
-				<h4 id="dni">DNI</h4>
-				<h5>CURSO: 5C</h5>
-			</div>
-		</section>
-		<section id="curso">
-			<div id="materia"></div>
-			<div class="twoColumns">
-				<div id="contentListWorks">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Nombre del Archivo</th>
-								<th scope="col">Fecha</th>
-								<th scope="col">Estado</th>
-							</tr>
-						</thead>
-						<tbody id="tbody"></tbody>
-					</table>
-				</div>
-				<section id="enviarArchivo">
-					<div><h4>Enviar archivo</h4></div>
-					<form>
-						<div class="form-group">
-						  <input type="file" class="form-control-file" id="inputFileSend">
-						</div>
-						<div id="sendFile"><img src="../img/send.png"></div>
-					  </form>
-					  <label id="notificacion"></label>
-				</section>
-				<!-- <div class="conexion">
-					<div class="infoRemitente">
-						<h4>Mensaje del Docente:</h4>
-						<h5>Luque Federico</h5>
-						<form>
-							<textarea>Hola Chicos mañana no hay clases</textarea>
-						</form>
+	<header>
+		<div id="logo">
+			<div class="imgLogo"></div>
+			<div class="titleLogo"></div>
+		</div>
+		<div id="menu">
+			<a class="title" href="/home">Home</a>
+			<span id="userEmail" class="title"></span>
+			<div class="avatar"></div>
+		</div>
+	</header>
+	<section id="topPannel">
+		<div class="boxTitle">
+			<span class="title">¡No te olvides de leer por aquí!</span>
+			<div id="txtMje"></div>
+		</div>
+		<div id="userData">
+			<form action="#" name="formRegister" method="get">
+				<div class="form-row">
+					<div class="col col-md-4">
+						<label class="title" for="inputFirstName">Nombres</label>
+						<input id="name" type="text" class="form-control">
 					</div>
-					<div class="mensaje"></div>
-				</div> -->
-			</div>
-		</section>
+					<div class="col col-md-4">
+						<label class="title" for="inputLastName">Apellido</label>
+						<input id="lastName" type="text" class="form-control">
+					</div>
+					<div class="col col-md-4">
+						<label class="title" for="inputCurso">Materia</label>
+						<input id="nameMateria" type="text" class="form-control" disabled>
+					</div>
+				</div>
+			</form>
+		</div>
 	</section>
+	<section id="downPannel">
+		<div id="formPannel">
+			<div id="iconoEnviar"></div>
+			<form action="#" name="formLogin" method="get">
+				<label class="title">Enviá un archivo</label>
+				<input type="file" class="form-control-file" id="inputFileSend">
+				<label id="lblNotif" class="notificacion"></label>
+				<button id="btnEnviar" type="button" class="btn btn-primary btn-lg btn-block">Enviar</button>
+			</form>
+		</div>
+		<div class="tableTp">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Nombre del Archivo</th>
+						<th scope="col">Fecha</th>
+						<th scope="col">Estado</th>
+					</tr>
+				</thead>
+				<tbody id="tbody"></tbody>
+			</table>
+		</div>
+	</section>
+	<script src="/js/jquery-3.3.1.min.js"></script>
 	<script src="/js/curso.js"></script>
 </body>
 

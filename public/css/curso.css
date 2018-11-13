@@ -1,107 +1,178 @@
-#container {
+header {
+    width: 100%;
+    height: 5%;
+    background-color: #1E90FF;
     position: relative;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
-#curso {
+#logo {
+    width: 50%;
+    height: 80px;
+    /* position: relative; */
+    display: inline-block;
+}
+
+#menu {
+    width: 49%;
+    height: 80px;
     position: absolute;
     display: inline-block;
-    width: 70%;
-    height: 100vh;
 }
 
-#materia{
-    height: 50px;
-    background-color: #000;
-    font-size: 25px;
+#menu a {
+    padding: 2px 10px 2px 50%;
+    margin: 5% auto;
+    display: inline-block;
     color: #fff;
-    font-style: initial;
-    text-align: center;
+    border-right: 1px solid #fff;
+}
 
+#menu span {
+    color: #fff;
+    border-right: 1px solid #fff;
+    display: inline-block;
+    padding: 0 5px 0 2px;
+}
+
+#logo .imgLogo {
+    width: 100px;
+    height: inherit;
+    background-image: url(../img/logoAlternativo.png);
+    display: inline-block;
+}
+
+#logo .titleLogo {
+    width: 200px;
+    height: 40px;
+    margin: 25px 20px 20px 10px;
+    display: inline-block;
+    position: absolute;
+    font-size: 50px;
+    background-image: url(../img/logwhite.png);
+}
+
+#topPannel {
+    width: 100%;
+    height: 200px;
+    background-color: #1E90FF;
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+    font-weight: normal;
+    line-height: 1.25;
+    position: relative;
+}
+
+.boxTitle {
+    width: 30%;
+    height: inherit;
+    display: inline-block;
+    position: relative;
+}
+
+#topPannel span {
+    margin: 20px 20px 10px 30px;
+    position: absolute;
+    font-size: 18px;
+}
+
+#txtMje {
+    overflow: scroll;
+    width: 80%;
+    height: 70%;
+    position: absolute;
+    top: 50px;
+    left: 25px;
+    padding: 20px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border-color: aliceblue;
+    background-color: #fff;
+    box-shadow: 1px 1px 1px gray;
+    color: #808080;
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif; 
+    font-weight: normal;
 
 }
 
 #userData {
-    width: 30%;
-    height: 100vh;
-    border-color: black;
-    border-right-style: solid;
-    border-right-width: 3px;
     display: inline-block;
-
-}
-
-.userImg {
-    background-image: url(../img/studentIcon.png);
-    width: 200px;
-    height: 200px;
-    margin: 20px auto;
-}
-
-.datos {
-    background-color: #000;
-    color: #fff;
-    width: 100%;
-    text-align: center;
-}
-
-.twoColumns {
-    width: 100%;
-    height: 90vh;
-
-}
-
- #contentListWorks {
-    overflow: scroll;
-    width: 100%;
-    height: 50%;
-} 
-
-#enviarArchivo {
     width: 60%;
-    margin: 0 auto;
+    height: inherit;
+    position: absolute;
+    top: 20px;
+    margin: 20px;
 }
 
-#sendFile {
-    width: 80px;
-    height: 80px;
-    background-color: #fff; 
-    border-radius: 2px;
-    border: 1px solid #d8d8d8;
-    box-shadow: 0 1px 6px rgba(0,0,0,.22);
-    border-bottom-width: 2px;
-    margin: 0 auto;
+.title {
+    text-align: center;
+    color: #fff;
+    line-height: 1.17;
+    font-weight: 100;
 }
 
-#sendFile:hover {
-    background-color: darkgray;
+.avatar {
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    margin: 5px 2px 5px 2px;
+    position: absolute;
+    background-image: url(../img/curso.png); 
+    background-repeat: no-repeat;  
 }
 
-#sendFile > img {
+#downPannel {
+    height: 200px;
     width: 100%;
+    position: relative;
 }
 
-#notificacion {
+#formPannel {
+    max-width: 480px;
+    height: 350px;
+    /* margin: 0 auto; */
+    padding: 40px 50px 54px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border-color: aliceblue;
+    position: relative;
+    top: -50px;
+    left: 60%;
+    background-color: #fff;
+    box-shadow: 1px 1px 1px gray;
+    color: #808080;
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif; 
+    font-weight: normal;
+}
+
+#formPannel .title {
+    font-size: 20px;
+    padding: 0 10px 0 30%;
+}
+
+#iconoEnviar {
+    width: 220px;
+    height: 150px;
+    margin: 0 auto;
+    background-image: url(../img/sendIcon.png);
+    background-repeat: no-repeat;
+}
+
+.tableTp {
+    width: 60%;
+    height: 300px;
+    overflow: scroll;
+    position: absolute;
+    top: 10px;
+}
+
+.notificacion {
     color: red;
 }
 
-#tbody {
-    height: 200px;
+
+.title {
+    color: #000;
+    font-size: 15px;
+    font-weight: normal!important;
+    font-style: oblique;
+    font-weight: 700;
 }
-/* 
-.conexion {
-    background-color: darkslategrey;
-    color: #fff;
-    height: 50%;
-    padding: 25px;
-    position: relative;
-   
-} 
-textarea {
-    position: absolute;
-    width: 90%;
-    height: 50%;
-} */
-
-
-

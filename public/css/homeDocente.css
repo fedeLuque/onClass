@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header {
+    width: 100%;
+    height: 5%;
+    background-color: #1E90FF;
+}
+#logo {
+    width: 300px;
+    height: 80px;
+    position: relative;
+}
+
+#logo .imgLogo {
+    width: 100px;
+    height: inherit;
+    background-image: url(../img/logoAlternativo.png);
+    display: inline-block;
+}
+
+#logo .titleLogo {
+    width: 200px;
+    height: 40px;
+    margin: 25px 20px 20px 10px;
+    display: inline-block;
+    position: absolute;
+    font-size: 50px;
+    background-image: url(../img/logwhite.png);
+}
+
+#container {
+    background-color: #DCDCDC;
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+    line-height: 2;
+    font-size: 20px;
+    font-weight: normal!important;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+.row {
+    margin-right: 0;
+}
+#profile {
+    background-color: #fff;
+    height: 80vh;
+    margin: 10px 5px 10px 20px;
+}
+
+.titleProfile {
+    padding: 10px;
+    text-align: center;
+}
+#icon {
+    width: 100%;
+    height: 300px;
+    background-image: url(../img/homeProfe.png);
+    background-repeat: no-repeat;
+    background-position-x: 20px;
+}
+
+#userData {
+    width: inherit;
+    height: 30px;
+    /* background-color: orange; */
+    font-size: 18px;
+    color: #fff;
+}
+
+#userData #lastName {
+    background-color: #1E90FF;
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+}
+
+#userData #name {
+    background-color: #1E90FF;
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+}
+
+
+#classList {
+    background-color: #fff;
+    height: 80vh;
+    margin: 10px 5px 10px 5px;
+    width: 750px;
+}
+
+#message {
+    background-color: #fff;
+    height: 80vh;
+    margin: 10px 0px 10px 5px; 
+}
+
+#containerMaterias {
+    padding-left: 15px;
+    white-space: nowrap;
+    height: 250px;
+    margin: 60px 0;
+    background-color: #DCDCDC;
+    width:750px;
+}
+
+.img {
+    height: 50%;
+    width: 50%;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+#imgBd {
+    background-image: url(../img/bdProfe.png);
+    background-repeat: no-repeat;
+    background-position-x: -10px;
+    background-position-y: -15px;
+}
+
+#imgGda {
+    background-image: url(../img/gdaProfe.png);
+    background-repeat: no-repeat;
+    background-position-x: -10px;
+    background-position-y: -15px;
+}
+
+#imgLab {
+    background-image: url(../img/labHardProfe.png);
+    background-repeat: no-repeat;
+    background-position-x: -10px;
+    background-position-y: -15px;
+}
+
+#imgSor {
+    background-image: url(../img/sorProfe.png);
+    background-repeat: no-repeat;
+    background-position-x: -10px;
+    background-position-y: -15px;
+}
+
+.title {
+    color: #000;
+    font-size: 15px;
+    font-weight: normal!important;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+.materia {
+    width: 150px;
+    height: 150px;
+    background-color: #fff; 
+    border-radius: 2px;
+    border: 1px solid #d8d8d8;
+    border-top: 5px solid #1E90FF;
+    box-shadow: 0 1px 6px rgba(0,0,0,.22);
+    border-bottom-width: 2px;
+    text-align: center;
+    margin: 25px 5px 25px 5px;
+    padding: 19px 5px 5px 5px;
+    position: relative;
+    display: inline-block;
+}
+
+.materia:hover {
+    background-color: #1E90FF;
+}
+
+.materia {
+    transition: background-color 0.4s linear 0.2s;
+}
+.materia:hover .title {
+    font-size: 17px;
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+#remitente, #destinatario {
+    width: 300px;
+    height: 40px;
+    position: relative;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+#remitente span, #destinatario span, #options span {
+    display: inline;
+    font-size: 18px;
+    padding: 5px;
+
+
+}
+
+#inputRemitente {
+    width: 82%;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    margin: 5px;
+}
+
+#inputDestinatario {
+    width: 77%;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    margin: 5px;
+    padding: 5px;
+
+}
+
+#seleccionCurso {
+    width: 230px;
+    height: inherit;
+
+}
+
+#options {
+    width: 95%;
+    height: 50px;
+    margin: 10px auto;
+    padding: 5px;
+    
+}
+
+#listaMaterias {
+    width: 69%;
+    height: 40px;
+    font-size: 15px;
+}
+
+#containerTxtArea {
+    width: 300px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+#containerTxtArea textarea {
+    width: inherit;
+    height: inherit;
+}
+
+#btnMessage {
+    width: 300px;
+    height: 60px;
+    margin: 10px auto;
+    position: relative;
+    background-color:#DCDCDC ;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    margin: 5px 2px;
+}
+
+.btn:hover {
+    background-color: #DCDCDC;
+}
+
+#btnSend {
+    background-image: url(../img/iconSend.png);
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: 5px;
+}
+
+#btnMessageEnviados {
+    margin-left: 180px;
+    background-image: url(../img/verMje.png);
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: 5px;
+}
+
+#containerNotif {
+    width: 300px;
+    height: 60px;
+    margin: 10px auto;
+    position: relative;
+}
+
+#notificacion {
+    color: red;
+}

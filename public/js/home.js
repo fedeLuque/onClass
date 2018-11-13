@@ -1,11 +1,23 @@
 ( function () {
     var user = JSON.parse(sessionStorage.getItem("user"));
-    document.querySelector("#apellido").innerHTML = user.lastName;
-    document.querySelector("#nombre").innerHTML = user.name;
-    document.querySelector("#dni").innerHTML += " "+ user.dni;
+    var inputName = document.querySelector("#name");
+    var inputApellido = document.querySelector("#lastName");
+    var inputEmail = document.querySelector("#email");
+    var inputDni = document.querySelector("#dni");
 
-    var btnLogout = document.querySelector("#logout");
-    btnLogout.addEventListener("click", function (e) {
-        window.location.assign("/");
-    })
+    inputName.disabled = true;
+    inputApellido.disabled = true;
+    inputEmail.disabled = true;
+    inputDni.disabled = true;
+
+    inputApellido.value = user.lastName;
+    inputName.value = user.name;
+    inputDni.value = user.dni;
+    inputEmail.value = user.email;
+
+    if (user.isAlumno === false) {
+        
+    }
+    console.log(user.name, user.lastName, user.email, user.dni);
+
 })()

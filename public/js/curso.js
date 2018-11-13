@@ -1,79 +1,103 @@
 (function () {
-    document.querySelector("#apellido").innerHTML = JSON.parse(sessionStorage.getItem("lastName"));
-    document.querySelector("#nombre").innerHTML = JSON.parse(sessionStorage.getItem("name"));
-    document.querySelector("#dni").innerHTML += " " + JSON.parse(sessionStorage.getItem("dni"));
-    
-    var materiaPath = window.location.pathname.split("/").pop();
-    var btnSendFile = document.querySelector("#sendFile");
-    var fileContainer = document.querySelector("#inputFileSend");
-    var notif = document.querySelector("#notificacion");
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    var inputName = document.querySelector("#name");
+    var inputApellido = document.querySelector("#lastName");
+    var email = document.querySelector("#userEmail");
+    var inputMateria = document.querySelector("#nameMateria");
+    var txtMssProfe = document.querySelector("#txtMje");
+    var btnSendFile = document.querySelector("#btnEnviar");
     var nameFile = document.querySelector("#inputFileSend");
+    var notif = document.querySelector("#lblNotif");
     var fileTp = {};
+    var idFile = 0;
     var fecha = new Date();
-    var id = 0;
 
-    var cargarTabla = function (materia) {
-        document.querySelector("#materia").textContent = materia.titulo;
-            var tbody = $('#tbody');
+    inputName.disabled = true;
+    inputApellido.disabled = true;
+    inputMateria.disabled = true;
+    
 
-            tbody.html("");
-            materia.files.forEach(file => {
-                tbody.append(` 
-                    <tr>
-                        <th scope="row"> ` + file.id + `</td>
-                        <td>` + file.nombreArchivo + `</td>
-                        <td>` + file.fecha + ` </td>
-                        <td>` + file.estado + `</td>
-                    </tr>
-                `)
-            })
+    inputApellido.value = user.lastName;
+    inputName.value = user.name;
+    email.textContent = user.email;
+    var cargarTabla = function (arrayTps) {
+        var tbody = $('#tbody');
+
+        tbody.html("");
+        arrayTps.forEach(file => {
+            tbody.append(` 
+                        <tr>
+                            <th scope="row"> ` + file.id + `</td>
+                            <td>` + file.nombreArchivo + `</td>
+                            <td>` + file.fecha + ` </td>
+                            <td>` + file.estado + `</td>
+                        </tr>
+                    `)
+        })
     }
+
+    //cargamos el ultimo mje del profe
+    $.ajax({
+        url: '/verMjesAlumno',
+        data: { materia: window.location.pathname.split("/").pop().toString() },
+        type: 'POST',
+        success: function (arrayMjes) {
+            txtMssProfe.innerHTML = arrayMjes[arrayMjes.length-1].fecha + "<br/>" + arrayMjes[arrayMjes.length-1].contenido
+            console.log(arrayMjes[arrayMjes.length-1]);
+        }
+    })
 
     nameFile.addEventListener("change", function (e) {
         notif.innerHTML = "";
     })
 
-    btnSendFile.addEventListener("click", function(e) {
-        
-        if(nameFile.value)
-        { 
-            
-            fileTp.id = id + 1;
+    switch (window.location.pathname.split("/").pop()) {
+        case "gda":
+            inputMateria.value = "Gestión de Datos";
+            break;
+        case "laboratorio":
+            inputMateria.value = "Laboratorio de Hardware";
+            break;
+        case "sor":
+            inputMateria.value = "Sistemas y Organizaciones";
+            break;
+        case "bd":
+            inputMateria.value = "Base de Datos";
+            break;
+    }
+
+    btnSendFile.addEventListener("click", function (e) {
+        if (nameFile.value) {
+            console.log(nameFile.value)
+            fileTp.id = idFile + 1;
             fileTp.nombreArchivo = nameFile.files[0].name;
             fileTp.fecha = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear();
             fileTp.estado = 'Pendiente';
-            fileTp.dniAlumno = sessionStorage.getItem("dni");
-            
-            $.ajax ({
+            fileTp.email = user.email;
+
+            $.ajax({
                 url: '/addFile',
-                data: {fileTp: fileTp, materia: materiaPath.toString()},
+                data: { fileTp: fileTp, nameMateria: window.location.pathname.split("/").pop().toString() },
                 type: 'POST',
-                success: function (materia) {
-                    id = materia.files.length;
-                    cargarTabla(materia);
+                success: function (arrayTps) {
+                    idFile = arrayTps.length;
+                    console.log(idFile)
+                    console.log(arrayTps)
+                    cargarTabla(arrayTps);  
                 }
             })
-        }
-        else {
+        } else {
             notif.innerHTML = "*Por favor, seleccione un archivo antes de enviar";
-            console.log(notif);
-        }
+        } nameFile.value = "";
     })
-  
-    
+
     $.ajax({
-        url: '/getInfo',
+        url: '/getTable',
         type: 'POST',
-        data: {materia: materiaPath.toString(), dni: JSON.parse(sessionStorage.getItem("dni"))},
-        success: function (materia) {
-            if(materia) {
-                console.log(materia)
-                // id = materia.files.length;
-                id= '6';
-                cargarTabla(materia);
-            }
-          
+        data: { nameMateria: window.location.pathname.split("/").pop().toString(), user: user },
+        success: function (arrayTps) {
+            idFile = arrayTps.length;
+            cargarTabla(arrayTps);
         }
     })
-    
 })()

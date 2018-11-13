@@ -16,7 +16,7 @@ app.get('/register', function (req, res) {
 	res.sendFile(path.join(__dirname, '/views/register.html'))
 })
 
-app.get('/forgot', function(req, res) {
+app.get('/forgot', function (req, res) {
 	res.sendFile(path.join(__dirname, '/views/forgot.html'))
 })
 
@@ -28,106 +28,342 @@ app.get('/curso/:materia', function (req, res) {
 	res.sendFile(path.join(__dirname, '/views/curso.html'))
 })
 
+app.get('/cursoDocente/:materia', function (req, res) {
+	res.sendFile(path.join(__dirname, '/views/cursoDocente.html'))
+})
+
+app.get('/homeDocente', function (req, res) {
+	res.sendFile(path.join(__dirname, '/views/homeDocente.html'))
+})
+
+app.get('/messages', function (req, res) {
+	res.sendFile(path.join(__dirname, '/views/message.html'))
+})
+
 app.get('/getFiles', function (req, res) {
 	res.json(sendFile);
 })
 
-app.post('/getInfo', function (req, res) {
-	var dniDueño = '44567334';
-	console.log(req.body.dni)
-	console.log(dniDueño)
-	var x = req.body.materia;
-
-	switch (x) {
-		case "gda":
-			var arregloGda = [];
-			for (var i = 0; i < materiaGda.files.length; i++) {
-				if (materiaGda.files[i].dniAlumno.toString() === dniDueño) {
-					arregloGda.push(materiaGda.files[i]);
-					console.log(arregloGda);
-				}
+app.post('/getTable', function (req, res) {
+	var arrayTps = [];
+	for (var i = 0; i < usersAlumno.length; i++) {
+		if (usersAlumno[i].email === req.body.user.email) {
+			var x = req.body.nameMateria;
+			switch (x) {
+				case "gda":
+					arrayTps = usersAlumno[i].materiaGda;
+					break;
+				case "laboratorio":
+					arrayTps = usersAlumno[i].materiaLab;
+					break;
+				case "sor":
+					arrayTps = usersAlumno[i].materiaSor;
+					break;
+				case "bd":
+					arrayTps = usersAlumno[i].materiaBd;
+					break;
 			}
-			res.json(arregloGda);
-
-
-
-		case "laboratorio":
-			res.json(materiaLab);
-			break;
-
-		case "sor":
-			res.json(materiaSor);
-			break;
-
-		case "bd":
-			res.json(materiaBd);
-			break;
-
-		default:
-			// alert ("error");
-			break;
-	}
+		} 
+	} res.json(arrayTps)
 })
 
 app.post('/register', function (req, res) {
-	//console.log(req.body.user);
-	usersAlumno.push(req.body.user)
-	console.log(usersAlumno)
-	res.json({ status: 200 }) // deberia devolver 400 si da algun error
-})
-
-app.post('/login', function (req, res) {
-	console.log(req.body);
 	var alumno = {};
 	for (var i = 0; i < usersAlumno.length; i++) {
-		if (usersAlumno[i].email == req.body.userName) {
+		if (usersAlumno[i].email === req.body.user.email) {
 			alumno = usersAlumno[i];
-			res.json(alumno)
 			break;
 		} else {
 			console.log("no hay coincidencia")
-			res.json(alumno)
 		}
-	}
-	
+	} res.json(alumno)
+})
+
+app.post('/login', function (req, res) {
+	var user = {};
+	for (var i = 0; i < usersAlumno.length; i++) {
+		if (usersAlumno[i].email == req.body.userName) {
+			user = usersAlumno[i];
+			break;
+		} else {
+			if (usersProfesor[i].email == req.body.userName) {
+				user = usersProfesor[i];
+				break
+			} else {
+				console.log("no hay coincidencia")
+			}
+		}
+	} res.json(user)
+
 })
 
 app.post('/addFile', function (req, res) {
-	var x = req.body.materia;
-	switch (x) {
+	var arrayTps = [];
+	for (var i = 0; i < usersAlumno.length; i++) {
+		if (usersAlumno[i].email === req.body.fileTp.email) {
+			var x = req.body.nameMateria;
+			switch (x) {
+				case "gda":
+					usersAlumno[i].materiaGda.push(req.body.fileTp);
+					arrayTps = usersAlumno[i].materiaGda;
+					break;
+				case "laboratorio":
+					usersAlumno[i].materiaLab.push(req.body.fileTp);
+					arrayTps = usersAlumno[i].materiaLab;
+					break;
+				case "sor":
+					usersAlumno[i].materiaSor.push(req.body.fileTp);
+					arrayTps = usersAlumno[i].materiaSor;
+					break;
+				case "bd":
+					usersAlumno[i].materiaBd.push(req.body.fileTp);
+					arrayTps = usersAlumno[i].materiaBd;
+					break;
+			}
+		}
+	}
+	res.json(arrayTps)
+})
+
+app.post('/tpsFind', function (req, res) {
+	var tp = {};
+	var arrayTps = [];
+	switch (req.body.nameMateria) {
 		case "gda":
-			materiaGda.files.push(req.body.fileTp);
-			console.log(materiaGda);
-			res.json(materiaGda);
+			for (var i = 0; i < usersAlumno.length; i++) {
+				for (var j = 0; j < usersAlumno[i].materiaGda.length; j++) {
+					tp = usersAlumno[i].materiaGda[j];
+					tp.user = usersAlumno[i].email;
+					arrayTps.push(tp);
+				}
+			}
+			res.json(arrayTps);
 			break;
 
 		case "laboratorio":
-			materiaLab.files.push(req.body.fileTp);
-			console.log(materiaLab);
-			res.json(materiaLab);
+			for (var i = 0; i < usersAlumno.length; i++) {
+				for (var j = 0; j < usersAlumno[i].materiaLab.length; j++) {
+					tp = usersAlumno[i].materiaLab[j];
+					tp.user = usersAlumno[i].email;
+					arrayTps.push(tp);
+				}
+			}
+			res.json(arrayTps);
 			break;
 
 		case "sor":
-			materiaSor.files.push(req.body.fileTp);
-			console.log(materiaSor);
-			res.json(materiaSor);
+			for (var i = 0; i < usersAlumno.length; i++) {
+				for (var j = 0; j < usersAlumno[i].materiaSor.length; j++) {
+					tp = usersAlumno[i].materiaSor[j];
+					tp.user = usersAlumno[i].email;
+					arrayTps.push(tp);
+				}
+			}
+			res.json(arrayTps);
 			break;
 
 		case "bd":
-			materiaBd.files.push(req.body.fileTp);
-			console.log(materiaBd);
-			res.json(materiaBd);
-			break;
-
-		default:
-			// alert ("error");
+			for (var i = 0; i < usersAlumno.length; i++) {
+				for (var j = 0; j < usersAlumno[i].materiaBd.length; j++) {
+					tp = usersAlumno[i].materiaBd[j];
+					tp.user = usersAlumno[i].email;
+					arrayTps.push(tp);
+				}
+			}
+			res.json(arrayTps);
 			break;
 	}
 
+})
 
+app.post('/verMjes', function (req, res) {
+	var mje = {};
+	var arrayMaterias = [];
+	var email = req.body.profe.email;
+	var materia = req.body.materia;
+
+	for (var i = 0; i < usersProfesor.length; i++) {
+		if (usersProfesor[i].email === email) {
+			for (var j = 0; j < usersProfesor[i].materias.length; j++) {
+				switch (materia) {
+					case "Gestión de Datos":
+						if (usersProfesor[i].materias[j].name === "gda") {
+							for (let k = 0; k < usersProfesor[i].materias[j].mjes.length; k++) {
+								mje.fecha = usersProfesor[i].materias[j].mjes[k].fecha;
+								mje.contenido = usersProfesor[i].materias[j].mjes[k].contenido;
+								arrayMaterias.push(mje);
+								res.json(arrayMaterias)
+							}
+						}
+						break;
+
+					case "Base de Datos":
+						if (usersProfesor[i].materias[j].name === "bd") {
+							for (let k = 0; k < usersProfesor[i].materias[j].mjes.length; k++) {
+								mje.fecha = usersProfesor[i].materias[j].mjes[k].fecha;
+								mje.contenido = usersProfesor[i].materias[j].mjes[k].contenido;
+								arrayMaterias.push(mje);
+								res.json(arrayMaterias)
+							}
+						}
+						break;
+
+					case "Lab. Hardware":
+						if (usersProfesor[i].materias[j].name === "laboratorio") {
+							for (let k = 0; k < usersProfesor[i].materias[j].mjes.length; k++) {
+								mje.fecha = usersProfesor[i].materias[j].mjes[k].fecha;
+								mje.contenido = usersProfesor[i].materias[j].mjes[k].contenido;
+								arrayMaterias.push(mje);
+								res.json(arrayMaterias)
+							}
+						}
+						break;
+
+					case "Sist. y Org.":
+						if (usersProfesor[i].materias[j].name === "sor") {
+							for (let k = 0; k < usersProfesor[i].materias[j].mjes.length; k++) {
+								mje.fecha = usersProfesor[i].materias[j].mjes[k].fecha;
+								mje.contenido = usersProfesor[i].materias[j].mjes[k].contenido;
+								arrayMaterias.push(mje);
+								res.json(arrayMaterias)
+							}
+						}
+						break;
+				}
+			}
+		}
+	}
+})
+
+app.post('/sendFile', function (req, res) {
+	var contenido = req.body.comunicado.mensaje;
+	var remitente = req.body.comunicado.remitente;
+	var destinatario = req.body.comunicado.destinatario;
+	var fecha = req.body.comunicado.fecha;
+	var mje = {};
+
+	for (var i = 0; i < usersProfesor.length; i++) {
+		if (usersProfesor[i].email === remitente) {
+			for (var j = 0; j < usersProfesor[i].materias.length; j++) {
+				switch (destinatario) {
+					case "Gestión de Datos":
+						if (usersProfesor[i].materias[j].name === "gda") {
+							mje.fecha = fecha;
+							mje.contenido = contenido;
+							usersProfesor[i].materias[j].mjes.push(mje)
+							res.json(usersProfesor[i].materias[j].mjes)
+						}
+						break;
+
+					case "Base de Datos":
+						if (usersProfesor[i].materias[j].name === "bd") {
+							mje.fecha = fecha;
+							mje.contenido = contenido;
+							usersProfesor[i].materias[j].mjes.push(mje)
+							res.json(usersProfesor[i].materias[j].mjes)
+						}
+						break;
+
+					case "Lab. Hardware":
+						if (usersProfesor[i].materias[j].name === "laboratorio") {
+							mje.fecha = fecha;
+							mje.contenido = contenido;
+							usersProfesor[i].materias[j].mjes.push(mje)
+							res.json(usersProfesor[i].materias[j].mjes)
+						}
+						break;
+
+					case "Sist. y Org.":
+						if (usersProfesor[i].materias[j].name === "sor") {
+							mje.fecha = fecha;
+							mje.contenido = contenido;
+							usersProfesor[i].materias[j].mjes.push(mje)
+							res.json(usersProfesor[i].materias[j].mjes)
+						}
+						break;
+				}
+			}
+		}
+	}
+})
+
+app.post('/verMjesAlumno', function (req, res) {
+	var materia = req.body.materia;
+	var arrayMjes = [];
+	console.log(materia);
+	for (var i = 0; i < usersProfesor.length; i++) {
+		for (var j = 0; j < usersProfesor[i].materias.length; j++) {
+			if (usersProfesor[i].materias[j].name === materia) {
+				arrayMjes = usersProfesor[i].materias[j].mjes;
+				console.log(arrayMjes);
+				res.json(arrayMjes);
+				break;
+			}
+		}
+		
+	}
 })
 
 //dataBase
+const usersProfesor = [
+	{
+		name: 'Federico Exequiel',
+		lastName: 'Luque',
+		email: 'federico.luquee@gmail.com',
+		password: '7777',
+		sexo: 'Masculino',
+		dni: '35530738',
+		isAlumno: false,
+		materias: [
+			{
+				name: "gda",
+				tps: [],
+				mjes: [
+					{
+						fecha: "15/11/2018",
+						contenido: "Hola chicos, como andan?"
+					},
+					{
+						fecha: "20/08/2018",
+						contenido: "Mañana no hay clases"
+					}
+				]
+			},
+			{
+				name: "bd",
+				tps: [],
+				mjes: [
+					{
+						fecha: "25/10/2018",
+						contenido: "Hola chicos, mañana prueba"
+					}
+				]
+			}
+		]
+	},
+	{
+		name: 'Emilia Gabriela',
+		lastName: 'Centeno',
+		email: 'egcenteno@gmail.com',
+		password: '8888',
+		sexo: 'Femenino',
+		dni: '33654783',
+		isAlumno: false,
+		materias: [
+			{
+				name: "sor",
+				tps: [],
+				mjes:
+					[]
+			},
+			{
+				name: "laboratorio",
+				tps: [],
+				mjes: []
+			}
+		]
+	}
+]
 const usersAlumno = [
 	{
 		name: 'Juan Alberto',
@@ -136,6 +372,7 @@ const usersAlumno = [
 		password: '1234',
 		sexo: 'Masculino',
 		dni: '44567334',
+		isAlumno: true,
 		curso: '5C',
 		materiaGda: [
 			{
@@ -201,6 +438,7 @@ const usersAlumno = [
 		password: '2222',
 		sexo: 'Femenino',
 		dni: '42237735',
+		isAlumno: true,
 		curso: '5C',
 		materiaGda: [
 			{
@@ -261,135 +499,6 @@ const usersAlumno = [
 		]
 	}
 ];
-
-// var materiaLab = {
-// 	titulo: "Lab. de Hardware",
-// 	files: [
-// 		{
-// 			id: 1,
-// 			nombreArchivo: 'tp1_memoria.pdf',
-// 			fecha: '03/06/2018',
-// 			estado: 'Aprobado',
-// 			dniAlumno: '44567334'
-
-// 		},
-// 		{
-// 			id: 2,
-// 			nombreArchivo: 'tp2_disco.pdf',
-// 			fecha: '07/08/2018',
-// 			estado: 'Aprobado',
-// 			dniAlumno: '44567334'
-// 		},
-// 		{
-// 			id: 3,
-// 			nombreArchivo: 'tp3_perifericos.pdf',
-// 			fecha: '13/10/2018',
-// 			estado: 'Pendiente',
-// 			dniAlumno: '42237735'
-
-// 		}
-// 	]
-// }
-
-// var materiaGda = {
-// 	titulo: "Gestión de Datos",
-// 	files: [
-// 		{
-// 			id: 1,
-// 			nombreArchivo: 'tp1_virus.pdf',
-// 			fecha: '12/09/2018',
-// 			estado: 'Pendiente',
-// 			dniAlumno: '42237735'
-
-// 		},
-// 		{
-// 			id: 2,
-// 			nombreArchivo: 'tp2_Antivirus.pdf',
-// 			fecha: '19/09/2018',
-// 			estado: 'Pendiente',
-// 			dniAlumno: '42237735'
-// 		},
-// 	]
-// }
-
-// var materiaSor = {
-// 	titulo: "Sistemas y Organizaciónes",
-// 	files: [
-// 		{
-// 			id: 1,
-// 			nombreArchivo: 'tp1_sistemas.pdf',
-// 			fecha: '11/04/2018',
-// 			estado: 'Aprobado',
-// 			dniAlumno: '44567334'
-
-// 		},
-// 		{
-// 			id: 2,
-// 			nombreArchivo: 'tp2_Organizaciones.pdf',
-// 			fecha: '12/06/2018',
-// 			estado: 'Pendiente',
-// 			dniAlumno: '44567334'
-// 		}
-// 	]
-// }
-
-// var materiaBd = {
-// 	titulo: "Base de Datos",
-// 	files: [
-// 		{
-// 			id: 1,
-// 			nombreArchivo: 'tp1_tablas.pdf',
-// 			fecha: '12/09/2018',
-// 			estado: 'Aprobado',
-// 			dniAlumno: '44567334'
-
-// 		},
-// 		{
-// 			id: 2,
-// 			nombreArchivo: 'tp2_consultas.pdf',
-// 			fecha: '19/09/2018',
-// 			estado: 'Aprobado',
-// 			dniAlumno: '42237735'
-// 		},
-// 		{
-// 			id: 3,
-// 			nombreArchivo: 'tp3_consultasII.pdf',
-// 			fecha: '25/10/2018',
-// 			estado: 'Aprobado',
-// 			dniAlumno: '42237735'
-// 		},
-// 		{
-// 			id: 4,
-// 			nombreArchivo: 'tp4_consultasIII.pdf',
-// 			fecha: '04/11/2018',
-// 			estado: 'Pendiente',
-// 			dniAlumno: '42237735'
-// 		}
-// 	]
-// }
-
-// const sendFile = [
-// 	{
-// 		id: 1,
-// 		nombreArchivo: 'tp1_memoria.pdf',
-// 		fecha: '12/09/2018',
-// 		estado: 'Pendiente'
-// 	},
-// 	{
-// 		id: 2,
-// 		nombreArchivo: 'tp2_disco.pdf',
-// 		fecha: '19/09/2018',
-// 		estado: 'Pendiente'
-// 	},
-// 	{
-// 		id: 3,
-// 		nombreArchivo: 'tp3_seguridadInformatica.pdf',
-// 		fecha: '12/10/2018',
-// 		estado: 'Aprobado'
-// 	}
-// ]
-
-
 
 app.listen(3000, function () {
 	console.log('Example app listening on port 3000!')

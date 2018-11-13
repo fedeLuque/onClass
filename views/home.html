@@ -6,103 +6,92 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/libs/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/home.css">
-	<script src="/js/jquery-3.3.1.min.js"></script>
-
+	<link rel="icon" href="img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
-	<section id="container">
-		<section id="userData">
-			<div class="userImg"></div>
-			<div class="datos">
-				<h2 id="apellido"></h2>
-				<h3 id="nombre"></h3>
-				<h4 id="dni">DNI</h4>
-				<h5>CURSO: 5C</h5>
+	<header>
+		<div id="logo">
+			<div class="imgLogo"></div>
+			<div class="titleLogo"></div>
+		</div>
+	</header>
+	<section id="topPannel">
+		<div class="boxTitle">
+			<div class="avatar"></div>
+			<div class="title">
+				<h3>¡Bienvenido Alumno!</h3>
 			</div>
-			<div id="logout">
-				<img src="../img/cerrar.png">
-			</div>
-		</section>
-		<section id="cursos">
-			<div class="title">Mis Cursos</div>
-			<div id="listClass">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<a href="/curso/gda">
-								<div class="class">
-									<img src="../img/gda.png">
-									<h4>Gestión de Datos</h4>
-								</div>
-							</a>
-						</div>
-						<div class="col">
-							<a href="/curso/laboratorio">
-								<div class="class">
-									<img src="../img/labHard.png">
-									<h4>Lab. de Hardware</h4>
-								</div>
-							</a>
-						</div>
-						<div class="w-100"></div>
-						<div class="col">
-							<a href="/curso/sor">
-								<div class="class">
-									<img src="../img/sor.png">
-									<h4>Sist. y Org.</h4>
-								</div>
-							</a>
-						</div>
-						<div class="col">
-							<a href="/curso/bd">
-								<div class="class">
-									<img src="../img/bd.png">
-									<h4>Base de Datos</h4>
-								</div>
-							</a>
-						</div>
+		</div>
+		<div id="userData">
+			<form action="#" name="formRegister" method="get">
+				<div class="form-row">
+					<div class="col col-md-6">
+						<label class= "title" for="inputFirstName">Nombres</label>
+						<input id="name" type="text" class="form-control" >
+					</div>
+					<div class="col col-md-6">
+						<label class= "title" for="inputLastName">Apellido</label>
+						<input id="lastName" type="text" class="form-control" >
 					</div>
 				</div>
-			</div>
-			<!-- <div class="materia">Gestión de Datos</div> -->
-			<!-- <section id="contentListWorks">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Nombre del Archivo</th>
-							<th scope="col">Fecha</th>
-							<th scope="col">Estado</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>tp1_SegInformatica.pdf</td>
-							<td>02/08/2018</td>
-							<td>Corregido</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>tp2_VirusInformaticos.pdf</td>
-							<td>12/08/2018</td>
-							<td>Pendiente</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>tp3_DispositivosAlmacen.docx</td>
-							<td>27/10/2018</td>
-							<td>Corregido</td>
-						</tr>
-					</tbody>
-				</table>
-			</section> -->
-		</section>
-
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label class= "title" for="inputEmail4">Email</label>
+						<input id="email" type="email" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label class= "title" for="inputDni">DNI</label>
+						<input id="dni" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-3" disabled>
+						<label class="title"for="inputCurso">Curso</label>
+						<input id="curso" type="text" class="form-control" value="5 C" disabled>
+					</div>
+				</div>
+			</form>
+		</div>
 	</section>
-
+	<section id="downPannel">
+		<div class="row">
+			<div class="col">
+				<a href="/curso/bd">
+					<div class="materia">
+						<div id="imgBd" class="img"></div>
+						<div class="title">Base de Datos</div>
+					</div>
+				</a>
+			</div>
+			<div class="col">
+				<a href="/curso/gda">
+					<div class="materia">
+						<div id="imgGda" class="img"></div>
+						<div class="title">Gestión de Datos</div>
+					</div>
+				</a>
+			</div>
+			<div class="col">
+				<a href="/curso/laboratorio">
+					<div class="materia">
+						<div id="imgLab" class="img"></div>
+						<div class="title">Lab. de Hardware</div>
+					</div>
+				</a>
+			</div>
+			<div class="col">
+				<a href="/curso/sor">
+					<div class="materia">
+						<div id="imgSor" class="img"></div>
+						<div class="title">Sist. y Org</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
 	<script src="/js/home.js"></script>
+	<script src="/js/jquery-3.3.1.min.js"></script>
 </body>
 
 </html>

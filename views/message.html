@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/libs/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/message.css">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <title>Tus mensajes</title>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <div class="imgLogo"></div>
+            <div class="titleLogo"></div>
+        </div>
+        <div id="menu">
+            <a class="title" href="/homeDocente">Home</a>
+            <span id="userEmail" class="title"></span>
+        </div>
+    </header>
+    <section id="container">
+            <div id="containerMessage">
+                <div class="titleMessage">
+                    <span id="message">Mensajes: </span>
+                </div>
+                <div id="tableMessage">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Contenido</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+    </section>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/message.js"></script>
+</body>
+</html>
