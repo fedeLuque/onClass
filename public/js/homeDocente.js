@@ -20,16 +20,25 @@
     var comunicado = {};
     var fecha = new Date();
     var lblNotif = document.querySelector("#notificacion");
+    var salir = document.querySelector("#salir");
 
     boxMateriaGda.style.display = "none";
     boxMateriaLab.style.display = "none";
     boxMateriaBd.style.display = "none";
     boxMateriaSor.style.display = "none";
+    
     lastName.innerHTML = "Prof. " + profe.lastName + ",";
     name.innerHTML = profe.name;
 
+    userEmail.innerHTML = profe.email;
+    nameMateriaUrl = window.location.pathname.split("/").pop();
+
     var firstName = name.innerHTML.split(" ")[0];
     fullNameMessage.value = lastName.innerHTML + " " + firstName;
+
+    salir.addEventListener("click", function (e) {
+        sessionStorage.removeItem("user");
+    })
 
     //cargar el combo
     var cargarCombo = function (e) {
@@ -96,6 +105,7 @@
                     type: 'POST',
                     success: function (arrayMjes) {
                         sessionStorage.setItem("arrayMjes", JSON.stringify(arrayMjes));
+                        sessionStorage.setItem("destinatario", JSON.stringify(materia));
                         window.location.assign("/messages");
                     }
                 })

@@ -10,43 +10,59 @@
 	var notifPass = document.querySelector("#lblNotifPass");
 	var usuario = {};
 
+	inputEmail.addEventListener("change", function (e) {
+		notifEmail.innerHTML = "";
+	})
 
+	inputPassword.addEventListener("change", function (e) {
+		notifPass.innerHTML = "";
+	})
 
 	btnContinuar.addEventListener("click", function (e) {
-		$.ajax({
-			url: '/login',
-			data: { userName: inputEmail.value },
-			type: 'POST',
-			success: function (userBd) {
-				if (Object.keys(userBd).length === 0) {
-					notifEmail.innerHTML = "*El Email que ingresaste no existe";
-					inputEmail.value = "";
-					inputEmail.focus();
-				} else {
-					usuario = userBd;
-					divEmail.style.display = "none";
-					divPass.style.display = "inline-block";
-					title.innerHTML = "Ahora, tu clave";
-					console.log("existe el usuario");
+		if (inputEmail.value != "") {
+			$.ajax({
+				url: '/login',
+				data: { userName: inputEmail.value },
+				type: 'POST',
+				success: function (userBd) {
+					if (Object.keys(userBd).length === 0) {
+						notifEmail.innerHTML = "*El Email que ingresaste no existe";
+						inputEmail.value = "";
+						inputEmail.focus();
+					} else {
+						usuario = userBd;
+						divEmail.style.display = "none";
+						divPass.style.display = "inline-block";
+						title.innerHTML = "Ahora, tu clave";
+						console.log("existe el usuario");
+					}
 				}
-			}
-		})
+			})
+		} else {
+			notifEmail.innerHTML = "*Te olvidaste de ingresar un Email";
+		}
+
 	})
 
 	btningresar.addEventListener("click", function (e) {
-		console.log(usuario.isAlumno)
-		if (usuario.password === inputPassword.value) {
-			if (usuario.isAlumno === false) {
-				window.location.assign("/homeDocente");
+		if (inputPassword.value != "") {
+			if (usuario.password === inputPassword.value) {
+				if (usuario.isAlumno === false) {
+					window.location.assign("/homeDocente");
+				} else {
+					window.location.assign("/home");
+				}
+				sessionStorage.setItem("user", JSON.stringify(usuario))
 			} else {
-				window.location.assign("/home");
+				notifPass.innerHTML = "* Contraseña Incorrecta";
+				inputPassword.value = "";
+				inputPassword.focus();
 			}
-			sessionStorage.setItem("user", JSON.stringify(usuario))
 		} else {
-			notifPass.innerHTML = "* Contraseña Incorrecta";
-			inputPassword.value = "";
-			inputPassword.focus();
+			notifPass.innerHTML = "* Te olvidaste de la contraseña!"
+
 		}
+
 	})
 
 })();

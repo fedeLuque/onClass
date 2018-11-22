@@ -4,42 +4,56 @@
 	var btnNewUser = document.querySelector("#btnNewUser");
 	var btnBack = document.querySelector("#btnBack");
 	var terms = document.querySelector("#terms");
+	var name = document.querySelector("#name");
+	var lastName = document.querySelector("#lastName");
+	var email = document.querySelector("#email");
+	var password = document.querySelector("#password");
+	var confPass = document.querySelector("#confPass");
+	var dni = document.querySelector("#dni");
+	var sex = document.querySelector("#inputSex");
 	var userData = {};
 	var isTermValid = false;
 	var notif = document.querySelector("#lblNotif");
 
+	var validacion = function (e) {
+		console.log(name.value, lastName.value, email.value, password.value, confPass.value, dni.value, sex.value)
+		if (name.value != "" && lastName.value != "" && email.value != "" && password.value != "" && confPass.value != "" && dni.value != "" && sex.value != "") {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	btnNewUser.addEventListener("click", function (e) {
 		e.preventDefault();
-		userData.name = (document.querySelector("#name").value).toUpperCase();
-		userData.lastName = (document.querySelector("#lastName").value).toUpperCase();
-		userData.email = document.querySelector("#email").value;
-		userData.password = document.querySelector("#password").value;
-		userData.dni = document.querySelector("#dni").value;
-		userData.sexo = document.querySelector("#inputSex").value;
-		userData.curso = '5C';
-		var gda = [];
-		var lab = [];
-		var sor = [];
-		var bd = [];
-		userData.materiaGd = gda;
-		userData.materiaLab = lab;
-		userData.materiaSor = sor;
-		userData.materiaBd = bd;
-		console.log(userData.email)
-		if (userData.email != "" && userData.password != "") { //faltan muchas mas validaciones
+		if (validacion() === true) {
+			console.log("todo ok la validacion");
+			userData.name = (name.value).toUpperCase();
+			userData.lastName = (lastName.value).toUpperCase();
+			userData.email = email.value;
+			userData.password = password.value;
+			userData.dni = dni.value;
+			userData.sexo = sex.value;
+			userData.isAlumno = true;
+			userData.curso = '5C';
+			userData.materiaGda = [];
+			userData.materiaLab = [];
+			userData.materiaSor = [];
+			userData.materiaBd = [];
+			console.log(userData)
 			if (inputPass.value === inputConfPas.value) {
 				$.ajax({
-					data: { user: userData },
+					data: { user: JSON.stringify(userData) },
 					url: '/register',
 					type: 'POST',
-					success: function (alumno) {
-						if (Object.keys(alumno).length === 0) {
+					success: function (response) {
+						if (response.status === 200	) {
 							sessionStorage.setItem("user", JSON.stringify(userData))
-							// window.location.assign("/home");
+							sessionStorage.setItem("isNewUser", true)
+							window.location.assign("/home");
 						} else {
 							notif.innerHTML = "UPS! Alguien con ese mismo email, ya se registró antes.";
 							document.querySelector("#email").focus();
-	
 						}
 					}
 				})
@@ -48,11 +62,9 @@
 				inputPass.value = "";
 				inputConfPas.value = "";
 			}
-	
 		} else {
 			notif.innerHTML = "Te olvidas de completar tus datos!";
 		}
-		
 	});
 
 	terms.addEventListener("change", function (e) {

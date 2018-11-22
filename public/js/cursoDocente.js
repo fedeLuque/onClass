@@ -4,12 +4,17 @@
     var name = document.querySelector("#name");
     var nameMateriaSpan = document.querySelector("#nameMateria");
     var userEmail = document.querySelector("#userEmail");
+    var salir = document.querySelector("#salir");
 
     lastName.innerHTML = "Prof. " + profe.lastName + ",";
     name.innerHTML = profe.name;
 
     userEmail.innerHTML = profe.email;
     nameMateriaUrl = window.location.pathname.split("/").pop();
+
+    salir.addEventListener("click", function (e) {
+        sessionStorage.removeItem("user");
+    })
 
     //cargarTPs
     var cargarTps = function (nameMateriaUrl) {

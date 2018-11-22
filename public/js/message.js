@@ -2,6 +2,7 @@
     var profe = JSON.parse(sessionStorage.getItem("user"));
     var messages = JSON.parse(sessionStorage.getItem("arrayMjes"));
     var destinatario = JSON.parse(sessionStorage.getItem("destinatario"));
+    console.log(destinatario)
 
     var tbody = $('#tbody');
     var userEmail = document.querySelector("#userEmail");

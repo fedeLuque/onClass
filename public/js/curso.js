@@ -1,5 +1,7 @@
 (function () {
     var user = JSON.parse(sessionStorage.getItem("user"));
+    var isNewUser = sessionStorage.getItem("isNewUser");
+    console.log(isNewUser)
     var inputName = document.querySelector("#name");
     var inputApellido = document.querySelector("#lastName");
     var email = document.querySelector("#userEmail");
@@ -68,21 +70,17 @@
 
     btnSendFile.addEventListener("click", function (e) {
         if (nameFile.value) {
-            console.log(nameFile.value)
             fileTp.id = idFile + 1;
             fileTp.nombreArchivo = nameFile.files[0].name;
             fileTp.fecha = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear();
             fileTp.estado = 'Pendiente';
             fileTp.email = user.email;
-
             $.ajax({
                 url: '/addFile',
-                data: { fileTp: fileTp, nameMateria: window.location.pathname.split("/").pop().toString() },
+                data: { fileTp: fileTp, nameMateria: window.location.pathname.split("/").pop().toString(), newUser: isNewUser },
                 type: 'POST',
                 success: function (arrayTps) {
                     idFile = arrayTps.length;
-                    console.log(idFile)
-                    console.log(arrayTps)
                     cargarTabla(arrayTps);  
                 }
             })

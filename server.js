@@ -63,18 +63,27 @@ app.post('/getTable', function (req, res) {
 					arrayTps = usersAlumno[i].materiaBd;
 					break;
 			}
-		} 
+		}
 	} res.json(arrayTps)
 })
 
 app.post('/register', function (req, res) {
-	var alumno = {};
-	for (var i = 0; i < usersAlumno.length; i++) {
-		if (usersAlumno[i].email === req.body.user.email) {
-			alumno = usersAlumno[i];
+	var existe = false;
+	var user = JSON.parse(req.body.user);
+	for (let i = 0; i < usersAlumno.length; i++) {
+		if (user.email === usersAlumno[i].email) {
+			existe = true;
 			break;
-		} 
-	} res.json(alumno)
+		}
+	}
+	if (existe === true) {
+		res.json({ status: 404 })
+	} else {
+		usersAlumno.push(user)
+		console.log(usersAlumno)
+		res.json({ status: 200 })
+	}
+
 })
 
 app.post('/login', function (req, res) {
@@ -87,7 +96,7 @@ app.post('/login', function (req, res) {
 			if (usersProfesor[i].email == req.body.userName) {
 				user = usersProfesor[i];
 				break
-			} 
+			}
 		}
 	} res.json(user)
 
@@ -95,6 +104,10 @@ app.post('/login', function (req, res) {
 
 app.post('/addFile', function (req, res) {
 	var arrayTps = [];
+	for (let i = 0; i < usersAlumno.length; i++) {
+		
+	}
+
 	for (var i = 0; i < usersAlumno.length; i++) {
 		if (usersAlumno[i].email === req.body.fileTp.email) {
 			var x = req.body.nameMateria;
@@ -188,7 +201,7 @@ app.post('/verMjes', function (req, res) {
 								mje.fecha = usersProfesor[i].materias[j].mjes[k].fecha;
 								mje.contenido = usersProfesor[i].materias[j].mjes[k].contenido;
 								arrayMaterias.push(mje);
-								res.json(arrayMaterias)
+
 							}
 						}
 						break;
@@ -199,7 +212,7 @@ app.post('/verMjes', function (req, res) {
 								mje.fecha = usersProfesor[i].materias[j].mjes[k].fecha;
 								mje.contenido = usersProfesor[i].materias[j].mjes[k].contenido;
 								arrayMaterias.push(mje);
-								res.json(arrayMaterias)
+
 							}
 						}
 						break;
@@ -210,7 +223,7 @@ app.post('/verMjes', function (req, res) {
 								mje.fecha = usersProfesor[i].materias[j].mjes[k].fecha;
 								mje.contenido = usersProfesor[i].materias[j].mjes[k].contenido;
 								arrayMaterias.push(mje);
-								res.json(arrayMaterias)
+
 							}
 						}
 						break;
@@ -221,7 +234,7 @@ app.post('/verMjes', function (req, res) {
 								mje.fecha = usersProfesor[i].materias[j].mjes[k].fecha;
 								mje.contenido = usersProfesor[i].materias[j].mjes[k].contenido;
 								arrayMaterias.push(mje);
-								res.json(arrayMaterias)
+
 							}
 						}
 						break;
@@ -229,6 +242,7 @@ app.post('/verMjes', function (req, res) {
 			}
 		}
 	}
+	res.json(arrayMaterias)
 })
 
 app.post('/sendFile', function (req, res) {
@@ -294,7 +308,7 @@ app.post('/verMjesAlumno', function (req, res) {
 				break;
 			}
 		}
-		
+
 	}
 })
 
@@ -347,7 +361,7 @@ const usersProfesor = [
 		sexo: 'Femenino',
 		dni: '33654783',
 		isAlumno: false,
-		materias:  [
+		materias: [
 			{
 				name: "sor",
 				tps: [],

@@ -18,6 +18,5 @@
     if (user.isAlumno === false) {
         
     }
-    console.log(user.name, user.lastName, user.email, user.dni);
 
 })()
